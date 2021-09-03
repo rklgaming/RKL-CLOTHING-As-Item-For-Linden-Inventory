@@ -2,7 +2,7 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'ESX Accessories'
+description 'Rkl Clothing'
 
 version 'legacy'
 
