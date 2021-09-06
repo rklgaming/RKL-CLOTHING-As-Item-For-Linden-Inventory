@@ -1,56 +1,19 @@
+
+
+ESX.RegisterServerCallback('rkl_clothing:checkMoney', function(source, cb, accessory)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer then
+		cb(xPlayer.getMoney() >= Config.Zones[accessory].Price)
+	end
+end)
+
 RegisterServerEvent('rkl_clothing:pay')
 AddEventHandler('rkl_clothing:pay', function(accessory)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if accessory == "Ears" then
-		xPlayer.removeMoney(Config.Zones.Ears.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Ears.Price)))
-	elseif accessory == "Mask" then
-		xPlayer.removeMoney(Config.Zones.Mask.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Mask.Price)))
-	elseif accessory == "Helmet" then
-		xPlayer.removeMoney(Config.Zones.Helmet.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Helmet.Price)))
-	elseif accessory == "Glasses" then
-		xPlayer.removeMoney(Config.Zones.Glasses.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Glasses.Price)))
-	elseif accessory == "Torso" then
-		xPlayer.removeMoney(Config.Zones.Torso.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Torso.Price)))
-	elseif accessory == "Tshirt" then
-		xPlayer.removeMoney(Config.Zones.Tshirt.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Tshirt.Price)))
-	elseif accessory == "Shoes" then
-		xPlayer.removeMoney(Config.Zones.Shoes.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Shoes.Price)))
-		
-	elseif accessory == "Pants" then
-		xPlayer.removeMoney(Config.Zones.Pants.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Pants.Price)))
-		
-	elseif accessory == "Arms" then
-		xPlayer.removeMoney(Config.Zones.Arms.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Arms.Price)))
-		
-	elseif accessory == "Bags" then
-		xPlayer.removeMoney(Config.Zones.Bags.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Bags.Price)))
-		
-	elseif accessory == "Bracelets" then
-		xPlayer.removeMoney(Config.Zones.Bracelets.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Bracelets.Price)))
-		
-	elseif accessory == "Watches" then
-		xPlayer.removeMoney(Config.Zones.Watches.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Watches.Price)))
-		
-	elseif accessory == "Chain" then
-		xPlayer.removeMoney(Config.Zones.Chain.Price)
-		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones.Chain.Price)))
-		
+	if xPlayer then
+		xPlayer.removeMoney(Config.Zones[accessory].Price)
+		TriggerClientEvent('esx:showNotification', source, _U('you_paid', ESX.Math.GroupDigits(Config.Zones[accessory].Price)))
 	end
-	
-
-	
 end)
 
 RegisterServerEvent('rkl_clothing:save')
@@ -114,38 +77,4 @@ AddEventHandler('rkl_clothing:save', function(skin, accessory)
 		end
 		
 	end)
-end)
-
-ESX.RegisterServerCallback('rkl_clothing:checkMoney', function(source, cb, accessory)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	
-	if accessory == "Ears" then
-		cb(xPlayer.getMoney() >= Config.Zones.Ears.Price)
-	elseif accessory == "Mask" then
-		cb(xPlayer.getMoney() >= Config.Zones.Mask.Price)
-	elseif accessory == "Helmet" then
-		cb(xPlayer.getMoney() >= Config.Zones.Helmet.Price)
-	elseif accessory == "Glasses" then
-		cb(xPlayer.getMoney() >= Config.Zones.Glasses.Price)
-	elseif accessory == "Torso" then
-		cb(xPlayer.getMoney() >= Config.Zones.Torso.Price)
-	elseif accessory == "Tshirt" then
-		cb(xPlayer.getMoney() >= Config.Zones.Tshirt.Price)
-	elseif accessory == "Arms" then
-		cb(xPlayer.getMoney() >= Config.Zones.Arms.Price)
-	elseif accessory == "Shoes" then
-		cb(xPlayer.getMoney() >= Config.Zones.Shoes.Price)
-	elseif accessory == "Pants" then
-		cb(xPlayer.getMoney() >= Config.Zones.Pants.Price)
-	elseif accessory == "Bags" then
-		cb(xPlayer.getMoney() >= Config.Zones.Bags.Price)
-	elseif accessory == "Watches" then
-		cb(xPlayer.getMoney() >= Config.Zones.Watches.Price)
-	elseif accessory == "Chain" then
-		cb(xPlayer.getMoney() >= Config.Zones.Chain.Price)
-	elseif accessory == "Bracelets" then
-		cb(xPlayer.getMoney() >= Config.Zones.Bracelets.Price)
-		
-	end
-	
 end)
