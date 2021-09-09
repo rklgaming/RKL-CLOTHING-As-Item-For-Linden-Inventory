@@ -1,5 +1,5 @@
-RegisterServerEvent('esx_accessories:pay')
-AddEventHandler('esx_accessories:pay', function(accessory)
+RegisterServerEvent('rkl_clothing:pay')
+AddEventHandler('rkl_clothing:pay', function(accessory)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	if accessory == "Ears" then
 		xPlayer.removeMoney(Config.Zones.Ears.Price)
@@ -63,8 +63,8 @@ AddEventHandler('esx_accessories:pay', function(accessory)
 	
 end)
 
-RegisterServerEvent('esx_accessories:save')
-AddEventHandler('esx_accessories:save', function(skin, accessory)
+RegisterServerEvent('rkl_clothing:save')
+AddEventHandler('rkl_clothing:save', function(skin, accessory)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
@@ -132,7 +132,7 @@ end)
 
 
 
-ESX.RegisterServerCallback('esx_accessories:checkMoney', function(source, cb, accessory)
+ESX.RegisterServerCallback('rkl_clothing:checkMoney', function(source, cb, accessory)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	
 	if accessory == "Ears" then
