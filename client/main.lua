@@ -29,12 +29,12 @@ function OpenShopMenu(accessory)
 			}}, function(data, menu)
 			menu.close()
 			if data.current.value == 'yes' then
-				ESX.TriggerServerCallback('esx_accessories:checkMoney', function(hasEnoughMoney)
+				ESX.TriggerServerCallback('rkl_clothing:checkMoney', function(hasEnoughMoney)
 					if hasEnoughMoney then
-						TriggerServerEvent('esx_accessories:pay', accessory)
+						TriggerServerEvent('rkl_clothing:pay', accessory)
 						TriggerEvent('skinchanger:getSkin', function(skin)
 						
-							TriggerServerEvent('esx_accessories:save', skin, accessory)
+							TriggerServerEvent('rkl_clothing:save', skin, accessory)
 							TriggerServerEvent('esx_skin:save', skin)
 						end)
 						
@@ -73,13 +73,13 @@ end
 AddEventHandler('esx:onPlayerSpawn', function() isDead = false end)
 AddEventHandler('esx:onPlayerDeath', function() isDead = true end)
 
-AddEventHandler('esx_accessories:hasEnteredMarker', function(zone)
+AddEventHandler('rkl_clothing:hasEnteredMarker', function(zone)
 	CurrentAction     = 'shop_menu'
 	CurrentActionMsg  = _U('press_access')
 	CurrentActionData = { accessory = zone }
 end)
 
-AddEventHandler('esx_accessories:hasExitedMarker', function(zone)
+AddEventHandler('rkl_clothing:hasExitedMarker', function(zone)
 	ESX.UI.Menu.CloseAll()
 	CurrentAction = nil
 end)
@@ -160,12 +160,12 @@ Citizen.CreateThread(function()
 		if (isInMarker and not HasAlreadyEnteredMarker) or (isInMarker and LastZone ~= currentZone) then
 			HasAlreadyEnteredMarker = true
 			LastZone = currentZone
-			TriggerEvent('esx_accessories:hasEnteredMarker', currentZone)
+			TriggerEvent('rkl_clothing:hasEnteredMarker', currentZone)
 		end
 
 		if not isInMarker and HasAlreadyEnteredMarker then
 			HasAlreadyEnteredMarker = false
-			TriggerEvent('esx_accessories:hasExitedMarker', LastZone)
+			TriggerEvent('rkl_clothing:hasExitedMarker', LastZone)
 		end
 		if sleep == 0 then nearMarker = true else nearMarker = false end
 		Citizen.Wait(sleep)
