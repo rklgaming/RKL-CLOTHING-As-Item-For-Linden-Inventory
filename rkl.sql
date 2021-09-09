@@ -14,4 +14,5 @@ INSERT INTO `datastore` (name, label, shared) VALUES
 ('user_shoes', 'Shoes', 0),
 ('user_torso', 'Torso', 0),
 ('user_tshirt', 'Tshirt', 0),
-('user_watches', 'Watches', 0);
+('user_watches', 'Watches', 0),
+('user_hair', 'Hair', 0);
